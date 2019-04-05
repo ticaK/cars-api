@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use App\Http\Requests\CarsRequest;
 
 class CarsController extends Controller
 {
@@ -12,7 +13,7 @@ class CarsController extends Controller
         return Car::all();
     }
 
-    public function store(Request $request)
+    public function store(CarsRequest $request)
     {
         return Car::create($request->all());
     }
@@ -22,7 +23,7 @@ class CarsController extends Controller
         return Car::findOrFail($id);
     }
 
-    public function update(Request $request, Car $car)
+    public function update(CarsRequest $request, Car $car)
     {
         $car->update($request->all());
         return $car;
